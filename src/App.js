@@ -1,24 +1,35 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import Home from './Home'
+import Signup from './Signup'
+import Login from './Login'
+import Users from './Users'
 
-function App() {
+
+import './App.css'
+
+const App = () => {
+
+  let routes = (
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/users" component={Users} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Redirect to="/" />
+      </Switch>
+    )
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <Router>
+        <MainNavigation />
+        <main id="center">
+          {routes}
+        </main>
+      </Router>
+  )
+
 }
 
-export default App;
+export default App
