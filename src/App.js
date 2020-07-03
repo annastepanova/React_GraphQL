@@ -4,7 +4,7 @@ import Home from './Home'
 import Signup from './Signup'
 import Login from './Login'
 import Users from './Users'
-
+import MainNavigation from './NavComponents/MainNavigation'
 
 import './App.css'
 
