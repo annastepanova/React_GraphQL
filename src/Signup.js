@@ -1,5 +1,33 @@
 import React, { useState } from 'react'
+import { useMutation } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
 
+// creating GraphQL mutation 
+
+const SIGN_UP = gql`
+      mutation register(
+        $name: String!
+        $username: String!
+        $email: String!
+        $password: String!
+        $confirmPassword: String!
+        ) {
+      register(registerInput: {
+        name: $name
+        username: $username
+        email: $email
+        password: $password
+        confirmPassword: $confirmPassword
+        }
+        ) {
+        id
+        name
+        username
+        email
+        token
+    }
+  }
+  `
 
 const Signup = () => {
 
@@ -14,6 +42,22 @@ const Signup = () => {
   const onChange = (event) => {
     setValues({...values, [event.target.name]: event.target.value})
   }
+
+  // executing a mutation
+
+  const [addUser, { loading }] = useMutation(SIGN_UP, {
+    update(proxy, result){
+      console.log(result)
+    },
+      variables: values
+    }
+  )
+
+  const onSubmit = (event) => {
+    event.preventDefault()
+    addUser()
+  }
+
 
   return (
       <div>
