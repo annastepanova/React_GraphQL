@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import './Signup.css'
+import './Form.css'
 
 // creating GraphQL mutation 
 
@@ -30,7 +30,7 @@ const SIGN_UP = gql`
   }
   `
 
-const Signup = () => {
+const Signup = (props) => {
 
   const [errors, setErrors] = useState({})
 
@@ -51,6 +51,7 @@ const Signup = () => {
   const [addUser, { loading }] = useMutation(SIGN_UP, {
     update(_, result){
       console.log(result)
+      props.history.push('/users')
     },
     onError(err) {
       console.log(err.graphQLErrors[0].extensions.exception.errors)
