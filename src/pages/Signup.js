@@ -3,6 +3,19 @@ import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import './Form.css'
 
+// creating GraphQL query
+
+const FETCH_USERS_QUERY = gql`
+  {
+    getUsers{
+    id
+    name 
+    username
+    email 
+    }
+  }
+`
+
 // creating GraphQL mutation 
 
 const SIGN_UP = gql`
@@ -46,7 +59,7 @@ const Signup = (props) => {
     setValues({...values, [event.target.name]: event.target.value})
   }
 
-  // executing a mutation
+  // executing a mutation, refetching user query after the mutation 
 
   const [addUser, { loading }] = useMutation(SIGN_UP, {
     update(_, result){
@@ -58,7 +71,10 @@ const Signup = (props) => {
       setErrors(err.graphQLErrors[0].extensions.exception.errors)
 
     },
-      variables: values
+      variables: values,
+      refetchQueries: [
+      { query: FETCH_USERS_QUERY }
+    ]
     }
   )
 
