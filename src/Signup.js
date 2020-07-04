@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
+import './Signup.css'
 
 // creating GraphQL mutation 
 
@@ -31,6 +32,8 @@ const SIGN_UP = gql`
 
 const Signup = () => {
 
+  const [errors, setErrors] = useState({})
+
   const [values, setValues] = useState({
     name: '',
     username: '',
@@ -46,8 +49,13 @@ const Signup = () => {
   // executing a mutation
 
   const [addUser, { loading }] = useMutation(SIGN_UP, {
-    update(proxy, result){
+    update(_, result){
       console.log(result)
+    },
+    onError(err) {
+      console.log(err.graphQLErrors[0].extensions.exception.errors)
+      setErrors(err.graphQLErrors[0].extensions.exception.errors)
+
     },
       variables: values
     }
@@ -62,46 +70,58 @@ const Signup = () => {
   return (
       <div>
         <form onSubmit={onSubmit}>
-          <h1>Sign up</h1>
+          <h1 className="form-title">Sign Up</h1>
+          <label for="name">Name</label>
           <input
+            id="name"
             name="name"
             type="text"
-            label="Your name"
-            placeholder="Name"
+            placeholder="Guy"
             value={values.name}
             onChange={onChange} />
+          <label for="username">Username</label>  
           <input
+            id="username"
             name="username"
             type="text"
-            label="Your username"
-            placeholder="Username"
+            placeholder="some_guy"
             value={values.username}
               onChange={onChange} />
+          <label for="email">Email</label>      
           <input
+            id="email"
             name="email"
             type="email"
-            label="Your email"
-            placeholder="Email"
+            placeholder="guy@gmail.com"
             value={values.email}
             onChange={onChange} />
+          <label for="password">Password</label>  
           <input
+            id="password"
             name="password"
             type="password"
-            label="Your password"
-            placeholder="Password"
             value={values.password}
             onChange={onChange} />
+         <label for="confirmPassword">Confirm password</label>  
           <input
+            id="confirmPassword"
             name="confirmPassword"
             type="password"
-            label="Confirm your password"
-            placeholder="Confirm your password"
             value={values.confirmPassword}
             onChange={onChange} />
-          <button type="submit">
+          <button type="submit"className="form-button">
             SIGN UP
           </button>
         </form>
+        {Object.keys(errors).length > 0 && (
+          <div>
+            <ul>
+              {Object.values(errors).map(value => (
+                <li key={value}>{value}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
   )
