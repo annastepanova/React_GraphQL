@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
-import Home from './Home'
-import Signup from './Signup'
-import Login from './Login'
+import Home from './pages/Home'
+import Signup from './pages/Signup'
+import Login from './pages/Login'
 import Users from './Users'
 import MainNavigation from './NavComponents/MainNavigation'
 

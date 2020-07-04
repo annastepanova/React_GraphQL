@@ -45,3 +45,11 @@
     display: block;
   }
 }
+
+
+@media (max-width: 370px) {
+  .main-navigation__title {
+    font-size: 1.6rem;
+  }
+}
+

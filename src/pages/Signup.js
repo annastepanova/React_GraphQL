@@ -115,7 +115,7 @@ const Signup = (props) => {
           </button>
         </form>
         {Object.keys(errors).length > 0 && (
-          <div>
+          <div className="error-message">
             <ul>
               {Object.values(errors).map(value => (
                 <li key={value}>{value}</li>
