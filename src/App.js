@@ -12,7 +12,6 @@ import './App.css'
 const App = () => {
 
   let routes = (
-    <AuthProvider>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/users" component={Users} />
@@ -20,17 +19,18 @@ const App = () => {
         <Route path="/signup" component={Signup} />
         <Redirect to="/" />
       </Switch>
-    </AuthProvider>
   )
 
 
   return (
+    <AuthProvider>
       <Router>
         <MainNavigation />
         <main id="center">
           {routes}
         </main>
       </Router>
+    </AuthProvider> 
   )
 
 }

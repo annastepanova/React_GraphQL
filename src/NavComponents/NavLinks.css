@@ -30,7 +30,7 @@
   color: #fff;
 }
 
-.nav-links button {
+.button-logout {
   cursor: pointer;
   border: 1px solid #292929;
   color: #292929;
@@ -39,7 +39,7 @@
   font: inherit;
 }
 
-.nav-links button:focus {
+.button:focus {
   outline: none;
 }
 
@@ -64,7 +64,7 @@
     text-decoration: none;
   }
 
-  .nav-links button {
+  .button {
     border: 1px solid #f3f6f7;
     color: white; 
     background: transparent;
@@ -72,7 +72,7 @@
   
   .nav-links button:hover,
   .nav-links button:active {
-   background:	rgba(93, 130, 142,0.5);
+   background:#e535ab;
    color: white;
   }
 }
