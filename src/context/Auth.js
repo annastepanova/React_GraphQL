@@ -1,7 +1,21 @@
 import React, { useReducer, createContext } from 'react'
+import jwt_decode from 'jwt-decode'
+
 
 const initialState = {
   user: null
+}
+
+// decoding jwt token and checking if token is expired
+
+if (localStorage.getItem('jwtToken')) {
+  const decodedToken = jwt_decode(localStorage.getItem('jwtToken'))
+
+  if (decodedToken.exp * 1000 < Date.now()) {
+    localStorage.removeItem('jwtToken')
+  } else {
+    initialState.user = decodedToken
+  }
 }
 
 // creating a Context object
@@ -37,6 +51,9 @@ const AuthProvider = (props) => {
 
   const login = (userData) => {
 
+    // storing jwt token in local storage
+    localStorage.setItem('jwtToken', userData.token)
+
     dispatch({
       type: 'LOGIN',
       payload: userData
@@ -44,6 +61,10 @@ const AuthProvider = (props) => {
   }
 
   const logout = () => {
+
+    // removing jwt token from local storage
+    localStorage.removeItem('jwtToken')
+
     dispatch({ type: 'LOGOUT' })
   }
 
