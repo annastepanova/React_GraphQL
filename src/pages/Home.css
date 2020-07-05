@@ -1,0 +1,35 @@
+.animation-title {
+  text-align: center;
+}
+
+.title-span {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2d2d2d;
+}
+
+.gql {
+  color:#e535ab;
+}
+
+.apollo {
+  color: #3f20ba;
+}
+
+.mongodb {
+  color: #589636;
+}
+
+.node {
+  color: #215732;
+}
+
+.react {
+  color: #00d8ff;
+}
+
+@media (max-width: 370px) {
+   .title-span {
+    font-size: 2.7rem;
+  }
+}

@@ -39,7 +39,7 @@
   font: inherit;
 }
 
-.button:focus {
+.button-logout:focus {
   outline: none;
 }
 

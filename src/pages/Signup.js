@@ -90,7 +90,7 @@ const Signup = (props) => {
       <div>
         <form onSubmit={onSubmit}>
           <h1 className="form-title">Sign Up</h1>
-          <label for="name">Name</label>
+          <label htmlFor="name">Name</label>
           <input
             id="name"
             name="name"
@@ -98,7 +98,7 @@ const Signup = (props) => {
             placeholder="Guy"
             value={values.name}
             onChange={onChange} />
-          <label for="username">Username</label>  
+          <label htmlFor="username">Username</label>  
           <input
             id="username"
             name="username"
@@ -106,7 +106,7 @@ const Signup = (props) => {
             placeholder="some_guy"
             value={values.username}
               onChange={onChange} />
-          <label for="email">Email</label>      
+          <label htmlFor="email">Email</label>      
           <input
             id="email"
             name="email"
@@ -114,14 +114,14 @@ const Signup = (props) => {
             placeholder="guy@gmail.com"
             value={values.email}
             onChange={onChange} />
-          <label for="password">Password</label>  
+          <label htmlFor="password">Password</label>  
           <input
             id="password"
             name="password"
             type="password"
             value={values.password}
             onChange={onChange} />
-         <label for="confirmPassword">Confirm password</label>  
+          <label htmlFor="confirmPassword">Confirm password</label>  
           <input
             id="confirmPassword"
             name="confirmPassword"

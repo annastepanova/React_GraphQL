@@ -6,9 +6,9 @@ const User = (props) => {
 
   return (
     <ul className="card">
-      <li>{props.user.name}</li>
-      <li>{props.user.username}</li>
-      <li>{props.user.email}</li>
+      <li><span className="card-span">Name: </span>{props.user.name}</li>
+      <li><span className="card-span">Username: </span> {props.user.username}</li>
+      <li><span className="card-span">Email: </span>{props.user.email}</li>
     </ul>
   )
 }
