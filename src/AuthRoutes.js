@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import Home from './pages/Home'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
-import Users from './Users'
+import Users from './pages/Users'
 import { AuthContext } from './context/Auth'
 
 const AuthRoutes = () => {

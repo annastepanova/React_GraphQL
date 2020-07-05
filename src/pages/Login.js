@@ -40,7 +40,7 @@ const Login = (props) => {
 
   // executing a mutation
 
-  const [loginUser, { loading }] = useMutation(LOG_IN, {
+  const [loginUser] = useMutation(LOG_IN, {
     update(_, { data: { login: userData }}) {
       context.login(userData)
       props.history.push('/users')

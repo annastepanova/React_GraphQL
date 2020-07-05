@@ -63,7 +63,7 @@ const Signup = (props) => {
 
   // executing a mutation, refetching users query after the mutation 
 
-  const [addUser, { loading }] = useMutation(SIGN_UP, {
+  const [addUser] = useMutation(SIGN_UP, {
     update(_, { data: { register: userData }}){
       context.login(userData)
       props.history.push('/users')

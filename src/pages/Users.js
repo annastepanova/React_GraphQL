@@ -1,8 +1,9 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import User from './User'
-import './User.css'
+import User from '../components/User'
+import Spinner from '../components/Spinner'
+import '../components/User.css'
 
 
 // creating GraphQL query
@@ -24,8 +25,13 @@ const Users = () => {
 
   return (
     <div className="container">
-    { data && data.getUsers.map((user) => (
-        <User key={user.id} user={user}/>
+    {loading && (
+      <div className="center">
+        <Spinner />
+      </div>
+    )}
+    {!loading && data && data.getUsers.map((user) => (
+      <User key={user.id} user={user}/>
     ))    
     }
     <button onClick={() => refetch()} className="list-button">UPDATE</button>

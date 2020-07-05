@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import MainNavigation from './NavComponents/MainNavigation'
 import { AuthProvider} from './context/Auth'
-import AuthRoutes from './AuthRoute'
+import AuthRoutes from './AuthRoutes'
 
 import './App.css'
 
