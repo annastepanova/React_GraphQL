@@ -9,7 +9,7 @@ import { ApolloProvider } from '@apollo/react-hooks'
 // creating an instance of ApolloClient
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:5000'
+  uri: `${process.env.REACT_APP_BACKEND_URL}`
 })
 
 const client = new ApolloClient({

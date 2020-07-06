@@ -24,20 +24,21 @@ const Users = () => {
   const { loading, data, refetch } = useQuery(FETCH_USERS_QUERY)
 
   return (
-    <div className="container">
+    <>
     {loading && (
       <div className="center">
         <Spinner />
       </div>
     )}
+    <div className="container">
     {!loading && data && data.getUsers.map((user) => (
       <User key={user.id} user={user}/>
     ))    
     }
-    <button onClick={() => refetch()} className="list-button">UPDATE</button>
     </div>
+    <button onClick={() => refetch()} className="list-button">UPDATE</button>
+    </>
   )
-
 }
 
 
