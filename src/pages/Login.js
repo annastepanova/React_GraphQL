@@ -4,6 +4,19 @@ import gql from 'graphql-tag'
 import { AuthContext } from '../context/Auth'
 import './Form.css'
 
+// creating GraphQL query
+
+const FETCH_USERS_QUERY = gql`
+  {
+    getUsers{
+    id
+    name 
+    username
+    email 
+    }
+  }
+`
+
 // creating GraphQL mutation 
 
 const LOG_IN = gql`
@@ -50,9 +63,11 @@ const Login = (props) => {
       setErrors(err.graphQLErrors[0].extensions.exception.errors)
 
     },
-    variables: values
-  }
-  )
+    variables: values,
+    refetchQueries: [
+      { query: FETCH_USERS_QUERY }
+    ]
+  })
 
   const onSubmit = (event) => {
     event.preventDefault()
@@ -92,15 +107,6 @@ const Login = (props) => {
           </div>
         )}
       </form>
-      {/* {Object.keys(errors).length > 0 && (
-        <div className="error-message">
-          <ul>
-            {Object.values(errors).map(value => (
-              <li key={value}>{value}</li>
-            ))}
-          </ul>
-        </div>
-      )} */}
     </div>
 
   )
