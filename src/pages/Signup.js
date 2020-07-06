@@ -131,16 +131,16 @@ const Signup = (props) => {
           <button type="submit"className="form-button">
             SIGN UP
           </button>
+          {Object.keys(errors).length > 0 && (
+            <div className="error-message">
+              <ul>
+                {Object.values(errors).map(value => (
+                  <li key={value}>{value}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </form>
-        {Object.keys(errors).length > 0 && (
-          <div className="error-message">
-            <ul>
-              {Object.values(errors).map(value => (
-                <li key={value}>{value}</li>
-              ))}
-            </ul>
-          </div>
-        )}
       </div>
 
   )

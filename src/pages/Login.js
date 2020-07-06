@@ -61,7 +61,7 @@ const Login = (props) => {
 
 
   return (
-    <div>
+    <div className="form-container">
       <form onSubmit={onSubmit}>
         <h1 className="form-title">LOG IN</h1>
         <label htmlFor="username">Username</label>
@@ -82,8 +82,17 @@ const Login = (props) => {
         <button type="submit" className="form-button">
           LOG IN
           </button>
+        {Object.keys(errors).length > 0 && (
+          <div className="error-message">
+            <ul>
+              {Object.values(errors).map(value => (
+                <li key={value}>{value}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </form>
-      {Object.keys(errors).length > 0 && (
+      {/* {Object.keys(errors).length > 0 && (
         <div className="error-message">
           <ul>
             {Object.values(errors).map(value => (
@@ -91,7 +100,7 @@ const Login = (props) => {
             ))}
           </ul>
         </div>
-      )}
+      )} */}
     </div>
 
   )

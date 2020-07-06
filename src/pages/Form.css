@@ -11,7 +11,7 @@ form {
   background: #fff;
   padding: 3em 3em 2em;
   width: 100%;
-  margin: 50px auto 0;
+  margin: 50px auto;
   box-shadow: 0 0 1em #222;
   border-radius: 2px;
 } 
@@ -65,7 +65,7 @@ label{
   background-color: #fce4e4;
   border: 1px solid #cc0033;
   color: #cc0033;
-  margin-top: 20px;
+  margin-top: 25px;
   border-radius: 2px;
 }
 
